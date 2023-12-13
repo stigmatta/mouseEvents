@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 03</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        let div1 = document.querySelector("div");
+        let div2 = div1.nextElementSibling;
+        let div3 = div2.nextElementSibling;
+        let allDivs = document.querySelectorAll("div");
+        let active = false;
+        document.addEventListener("keydown",function(e){
+            if(e.code === "ControlLeft"){
+                active=true;
+            }
+        });
+        document.addEventListener("keydown",function(e){
+            switch(e.code){
+                case "Digit1":
+                    div1.style.border="2px solid red";
+                    break;
+                case "Digit2":
+                    div2.style.border="2px solid red";
+                    break;
+                case "Digit3":
+                    div3.style.border="2px solid red";
+                    break;
+                case "KeyA":
+                    if(active){
+                        for (let i = 0; i < allDivs.length; i++) 
+                            allDivs[i].style.border="2px solid red";
+                    }
+                    
+            }
+        });
+        document.addEventListener("keyup",function(e){
+            for (let i = 0; i < allDivs.length; i++){
+                allDivs[i].style.border="none";
+                active=false;
+            }
+        });
+        
+        /*
+        Задание:
+        Реализуйте сценарий, который при нажатии на клавиши 1, 2 или 3 на клавиатуре будет добавлять рамку
+        красного цвета на соответствующий div. Если зажаты клавиши Ctrl + A, то красная рамка добавляется сразу
+        для всех div
+        */
+    </script>
+</body>
+
+</html>
